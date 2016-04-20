@@ -36,10 +36,10 @@ int parse ( int argc, char *argv[], int (*callbk_check)(char* , char*) )
 		if ( (argv[n][0]) != '-' )
 			continue;
 		
-		/*Si el siguiente es una opcion debo devolver error*/
-		if ( ( n==(argc-1)) || (argv[n+1][0] == '-') )
+		/*Si el siguiente es una opcion debo devolver error o la opcion esta vacia*/
+		if ( ( n==(argc-1)) || (argv[n+1][0] == '-') || (argv[n][1]=='\0') )
 		{
-			printf("\nFalta un valor para el argumento %d\n", n);
+			printf("\nError en el argumento %d\n", n);
 			return ERROR;
 		}
 	    n++;
@@ -111,6 +111,7 @@ int imprimir(int argc, char* argv[])
 			}
 		}
 	/*Devuelvo el estado de la impresion*/
+	printf("\n");
 	return OK;
 }
 
